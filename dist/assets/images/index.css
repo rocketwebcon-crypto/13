@@ -1,0 +1,60 @@
+/* CTA overrides — keep on-brand, make CTAs pop */
+:root{
+  --brand-brown: #D6B586;
+  --cta-accent: #EFCF9E; /* slightly brighter, still on-brand */
+  --cta-shadow: 0 10px 30px rgba(214,181,134,0.28);
+}
+
+/* Target elements that use Tailwind "bg-brand-*" utilities (CTA buttons/links) */
+button[class*="bg-brand"],
+a[class*="bg-brand"],
+button[class*="text-brand-brown"],
+a[class*="text-brand-brown"],
+.cta {
+  background-color: var(--cta-accent) !important;
+  color: #000 !important;
+  font-weight: 800 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: var(--cta-shadow) !important;
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease !important;
+  will-change: transform;
+}
+
+/* Strong hover to make buttons "pop" */
+button[class*="bg-brand"]:hover,
+a[class*="bg-brand"]:hover,
+button:hover.cta,
+a:hover.cta {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 20px 40px rgba(214,181,134,0.34) !important;
+  filter: saturate(1.06) !important;
+}
+
+/* Focus styles for accessibility */
+button[class*="bg-brand"]:focus-visible,
+a[class*="bg-brand"]:focus-visible,
+.cta:focus-visible {
+  outline: 3px solid rgba(214,181,134,0.25) !important;
+  outline-offset: 3px !important;
+}
+
+/* Make bordered white CTAs stand out when they use brand borders */
+button[class*="border-brand-black"],
+a[class*="border-brand-black"] {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12) !important;
+}
+
+/* Small utility to emphasize text CTAs */
+.text-cta {
+  color: var(--brand-brown) !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Keep styles respectful of small/disabled states */
+button:disabled, a[aria-disabled="true"] {
+  opacity: 0.6 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+}
